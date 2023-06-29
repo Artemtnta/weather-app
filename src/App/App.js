@@ -1,14 +1,16 @@
 import "./App.css";
-
+import { useEffect } from "react";
+import { YourWeather } from "../YourWeather/Your-weather";
 import { fetchPlace } from "../fetch";
 function App() {
-  const handleClick = () => fetchPlace();
+  let Arr = [];
+  useEffect(() => {
+    Arr = fetchPlace();
+  }, []);
   return (
     <div className="App">
       <p>buongiorno</p>
-      <button className="cerca" onClick={handleClick}>
-        luogo
-      </button>
+      {<p>caricando....</p> || <YourWeather Arr={Arr} />}
     </div>
   );
 }
